@@ -110,7 +110,9 @@
   .contact { background: var(--ink); color: #fff; }
   .contact .title { color: #fff; }
   .contact p { color: #D9CFDC; margin: 0 0 1.75rem; max-width: 32em; }
-  .phone { display: inline-block; font-family: var(--mono); font-size: clamp(1.5rem, 5vw, 2.5rem); font-weight: 500; color: var(--butter); text-decoration: none; border-bottom: 3px solid var(--butter); }
+  .reach { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; }
+  .reach .label { display: block; font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: #A99BAE; margin-bottom: .35rem; }
+  .phone { display: inline-block; font-family: var(--mono); font-size: clamp(1.1rem, 5vw, 2rem); font-weight: 500; color: var(--butter); text-decoration: none; border-bottom: 3px solid var(--butter); overflow-wrap: anywhere; }
   .phone:hover { color: #fff; border-color: #fff; }
   footer { background: var(--ink); color: #A99BAE; font-size: .85rem; padding-block: 1.5rem; border-top: 1px solid rgba(255, 255, 255, .12); }
 
@@ -210,8 +212,11 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <h2 class="title">Talk to us.</h2>
-      <p>Questions about the Baking Recipe Organizer, or about automating a routine of your own? Call us.</p>
-      <a class="phone" href="tel:+821027807683">+82 10-2780-7683</a>
+      <p>Questions about the Baking Recipe Organizer, or about automating a routine of your own? Call or email us.</p>
+      <ul class="reach">
+        <li><span class="label">Phone</span><a class="phone" href="tel:+821027807683">+82 10-2780-7683</a></li>
+        <li><span class="label">Email</span><a class="phone" href="mailto:todaydomilo@todaydoapp.com">todaydomilo@todaydoapp.com</a></li>
+      </ul>
     </div>
   </section>
 </main>
