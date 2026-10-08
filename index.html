@@ -5,25 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>todayDo Support — Automate the daily routine</title>
 <meta name="description" content="todayDo Support builds tools that automate everyday routine work. Our current project turns baking recipes from photos or text into organized, saved recipes.">
-<meta name="theme-color" content="#E4EDD8">
+<meta name="theme-color" content="#D46353">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://todaydoapp.com/">
 <meta property="og:title" content="todayDo Support — Automate the daily routine">
 <meta property="og:description" content="Tools that automate everyday routine work. Now building a baking recipe organizer.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232A1A2F'/%3E%3Cpath d='M9 17l5 5 9-12' fill='none' stroke='%23F3C648' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:image" content="https://todaydoapp.com/logo.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Caveat:wght@500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=DM+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #E4EDD8;
-    --bg-deep: #D5E2C6;
-    --ink: #2A1A2F;
-    --ink-soft: #55445A;
-    --berry: #C72A55;
-    --butter: #F3C648;
-    --card: #FFFDF8;
-    --line: rgba(42, 26, 47, .16);
-    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --coral: #D46353;
+    --cream: #FFFFF3;
+    --band: #F8EFDD;
+    --ink: #2A100C;
+    --ink-soft: #6B4A42;
+    --coral-text: #B24A3B;
+    --line: rgba(42, 16, 12, .18);
+    --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
     --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
     --hand: "Caveat", "Bradley Hand", cursive;
     color-scheme: light;
@@ -32,92 +35,103 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: var(--cream);
     color: var(--ink);
-    font-family: var(--display);
-    font-size: 1.0625rem;
-    line-height: 1.6;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; }
-  :focus-visible { outline: 3px solid var(--berry); outline-offset: 3px; border-radius: 4px; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
   .wrap { width: min(1120px, 100% - 2rem); margin-inline: auto; }
 
+  /* coral surfaces: cream only for large text, ink for small text */
+  .coral { background: var(--coral); color: var(--ink); }
+
   /* header */
-  .top { display: flex; justify-content: space-between; align-items: center; padding-block: 1.25rem; }
-  .brand { font-weight: 800; font-size: 1.2rem; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
-  .brand b { color: var(--berry); font-weight: 800; }
-  .top nav a { font-size: .95rem; font-weight: 500; margin-left: 1.5rem; text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .top { display: flex; justify-content: space-between; align-items: center; padding-block: 1.5rem; }
+  .brand { color: var(--cream); font-weight: 700; font-size: 1.25rem; letter-spacing: .05em; text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--ink); font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin-left: .75rem; }
+  .top nav a { font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-left: 1.75rem; text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .top nav a:hover { border-color: var(--cream); }
   @media (max-width: 600px) { .top nav a:not(:last-child) { display: none; } .top nav a { margin-left: 0; } }
-  .top nav a:hover { border-color: var(--berry); }
 
   /* hero */
-  .hero { display: grid; gap: 3rem; padding-block: 2.5rem 5rem; align-items: center; }
-  .eyebrow { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 1rem; }
-  h1 { font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 1; letter-spacing: -.035em; font-weight: 800; margin: 0 0 1.5rem; }
-  h1 mark { background: linear-gradient(transparent 58%, var(--butter) 58% 92%, transparent 92%); color: inherit; padding: 0 .08em; }
-  .lede { font-size: 1.2rem; max-width: 34em; color: var(--ink-soft); margin: 0 0 2rem; }
-  .btn { display: inline-block; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; padding: .85rem 1.4rem; border-radius: 999px; transition: transform .15s, background .15s; }
-  .btn:hover { background: var(--berry); transform: translateY(-2px); }
+  .hero { padding-block: 3rem 5.5rem; }
+  h1 {
+    margin: 0 0 3rem; color: var(--cream); font-weight: 500; text-transform: uppercase;
+    font-size: clamp(2.1rem, 9vw, 6.5rem); line-height: 1.06; letter-spacing: .005em;
+  }
+  .hero-grid { display: grid; gap: 3rem; align-items: start; }
+  .lede { font-size: 1.15rem; font-weight: 500; max-width: 26em; margin: 0 0 2rem; }
+  .btn { display: inline-block; background: var(--ink); color: var(--cream); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; padding: 1rem 1.75rem; border-radius: 999px; transition: background .15s, color .15s; }
+  .btn:hover { background: var(--cream); color: var(--ink); }
 
   /* the transformation: messy note -> recipe card */
-  .stage { display: grid; gap: 1rem; align-items: center; }
-  .caption { font-family: var(--mono); font-size: .75rem; color: var(--ink-soft); margin: .75rem 0 0; }
+  .stage { display: grid; gap: 1rem; align-items: center; margin: 0; }
+  .caption { font-family: var(--mono); font-size: .75rem; margin: .75rem 0 0; }
   .note {
     position: relative; overflow: hidden; background: #fff; padding: 1.25rem 1.25rem 1.5rem;
     border-radius: 6px; transform: rotate(-2.5deg);
-    box-shadow: 0 1px 0 var(--line), 0 14px 28px -14px rgba(42, 26, 47, .35);
-    background-image: repeating-linear-gradient(transparent 0 27px, rgba(199, 42, 85, .13) 27px 28px);
+    box-shadow: 0 14px 28px -14px rgba(42, 16, 12, .5);
+    background-image: repeating-linear-gradient(transparent 0 27px, rgba(212, 99, 83, .22) 27px 28px);
     font-family: var(--hand); font-size: 1.45rem; line-height: 28px; color: #3a2d6b;
   }
   .note p { margin: 0; }
   .note .scan {
     position: absolute; left: 0; right: 0; height: 3px; top: 0;
-    background: var(--berry); box-shadow: 0 0 18px 4px rgba(199, 42, 85, .45);
+    background: var(--coral); box-shadow: 0 0 18px 4px rgba(212, 99, 83, .55);
     animation: scan 3.6s ease-in-out infinite;
   }
-  .arrow { justify-self: center; width: 44px; height: 44px; color: var(--berry); transform: rotate(90deg); }
+  .arrow { justify-self: center; width: 44px; height: 44px; color: var(--cream); transform: rotate(90deg); }
   .recipe {
-    background: var(--card); border-radius: 14px; padding: 1.5rem;
+    background: var(--cream); color: var(--ink); border-radius: 14px; padding: 1.5rem;
     border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink);
   }
-  .recipe h2 { font-size: 1.6rem; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 .25rem; }
+  .recipe h2 { font-size: 1.35rem; font-weight: 700; line-height: 1.15; letter-spacing: .01em; text-transform: uppercase; margin: 0 0 .35rem; }
   .recipe .meta { font-family: var(--mono); font-size: .8rem; color: var(--ink-soft); margin: 0 0 1rem; }
   .recipe h3 { font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; margin: 1.1rem 0 .4rem; padding-bottom: .3rem; border-bottom: 1px solid var(--line); }
   .recipe ul, .recipe ol { list-style: none; margin: 0; padding: 0; }
-  .recipe li { display: flex; gap: .9rem; padding: .22rem 0; font-size: .98rem; line-height: 1.45; }
-  .recipe li span:first-child { font-family: var(--mono); font-size: .85rem; min-width: 5.2em; color: var(--berry); font-weight: 500; }
+  .recipe li { display: flex; gap: .9rem; padding: .22rem 0; font-size: .92rem; line-height: 1.45; animation: rise .55s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i) * 90ms + 500ms); }
+  .recipe li span:first-child { font-family: var(--mono); font-size: .85rem; min-width: 5.2em; color: var(--coral-text); font-weight: 500; }
   .recipe ol li span:first-child { min-width: 1.2em; }
-  .recipe li { animation: rise .55s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i) * 90ms + 500ms); }
 
   @keyframes scan { 0% { top: 0; opacity: 0; } 10%, 90% { opacity: 1; } 100% { top: calc(100% - 3px); opacity: 0; } }
   @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
   /* sections */
-  section { padding-block: 4.5rem; }
-  .band { background: var(--bg-deep); }
-  h2.title { font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1.05; letter-spacing: -.03em; font-weight: 800; margin: 0 0 1.25rem; max-width: 16em; }
+  section { padding-block: 5rem; }
+  .band { background: var(--band); }
+  .title {
+    font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 600; line-height: 1.15; letter-spacing: .01em;
+    text-transform: uppercase; margin: 0 0 1.5rem; max-width: 18em;
+  }
+  .title::after { content: "."; color: var(--coral); }
   .two { display: grid; gap: 1.5rem 4rem; }
   .two p { margin: 0; color: var(--ink-soft); max-width: 36em; }
-  .pill { display: inline-block; font-family: var(--mono); font-size: .75rem; background: var(--butter); padding: .25rem .7rem; border-radius: 999px; margin-bottom: 1rem; }
+  .pill { display: inline-block; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: .3rem .8rem; border-radius: 999px; margin-bottom: 1.25rem; }
   .steps { list-style: none; counter-reset: s; padding: 0; margin: 2.5rem 0 0; display: grid; gap: 1.25rem; }
-  .steps li { counter-increment: s; background: var(--card); border: 2px solid var(--ink); border-radius: 14px; padding: 1.4rem; }
-  .steps li::before { content: counter(s); display: block; font-family: var(--mono); font-size: 2.2rem; font-weight: 500; color: var(--berry); line-height: 1; margin-bottom: .6rem; }
-  .steps h3 { margin: 0 0 .35rem; font-size: 1.25rem; letter-spacing: -.01em; }
-  .steps p { margin: 0; color: var(--ink-soft); font-size: 1rem; }
+  .steps li { counter-increment: s; background: var(--cream); border: 2px solid var(--ink); border-radius: 14px; padding: 1.5rem; }
+  .steps li::before { content: counter(s); display: block; font-family: var(--mono); font-size: 2.2rem; font-weight: 500; color: var(--coral); line-height: 1; margin-bottom: .75rem; }
+  .steps h3 { margin: 0 0 .4rem; font-size: 1.05rem; font-weight: 700; letter-spacing: .01em; }
+  .steps p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
 
   /* contact */
-  .contact { background: var(--ink); color: #fff; }
-  .contact .title { color: #fff; }
-  .contact p { color: #D9CFDC; margin: 0 0 1.75rem; max-width: 32em; }
-  .reach { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; }
-  .reach .label { display: block; font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: #A99BAE; margin-bottom: .35rem; }
-  .phone { display: inline-block; font-family: var(--mono); font-size: clamp(1.1rem, 5vw, 2rem); font-weight: 500; color: var(--butter); text-decoration: none; border-bottom: 3px solid var(--butter); overflow-wrap: anywhere; }
-  .phone:hover { color: #fff; border-color: #fff; }
-  footer { background: var(--ink); color: #A99BAE; font-size: .85rem; padding-block: 1.5rem; border-top: 1px solid rgba(255, 255, 255, .12); }
+  .contact .title { color: var(--cream); }
+  .contact .title::after { color: inherit; }
+  .contact p { font-size: 1.1rem; font-weight: 500; margin: 0 0 2rem; max-width: 30em; }
+  .reach { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.75rem; }
+  .reach .label { display: block; font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem; }
+  .reach a { display: inline-block; color: var(--cream); font-weight: 700; font-size: clamp(1.2rem, 5.2vw, 2rem); text-decoration: none; border-bottom: 3px solid var(--cream); overflow-wrap: anywhere; }
+  .reach a:hover { color: var(--ink); border-color: var(--ink); }
+
+  footer { background: var(--ink); color: #D9C3BB; font-size: .85rem; padding-block: 1.75rem; }
+  footer .wrap { display: flex; align-items: center; gap: 1rem; }
+  footer img { width: 56px; height: 56px; border-radius: 10px; display: block; }
 
   @media (min-width: 880px) {
-    .hero { grid-template-columns: 1.05fr 1fr; padding-block: 4rem 7rem; }
+    .hero-grid { grid-template-columns: 5fr 7fr; gap: 4rem; }
     .stage { grid-template-columns: .8fr 44px 1.2fr; gap: .75rem; }
     .arrow { transform: none; }
     .two { grid-template-columns: 1fr 1fr; align-items: start; }
@@ -133,68 +147,71 @@
 </head>
 <body>
 
-<header class="wrap top">
-  <a class="brand" href="#top" aria-label="todayDo Support, home">today<b>Do</b> Support</a>
-  <nav aria-label="Main">
-    <a href="#what">What we do</a>
-    <a href="#product">Product</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<div class="coral" id="top">
+  <header class="wrap top">
+    <a class="brand" href="#top" aria-label="todayDo Support, home">TO DAY DO.<span>Support</span></a>
+    <nav aria-label="Main">
+      <a href="#what">What we do</a>
+      <a href="#product">Product</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<main id="top">
   <div class="wrap hero">
-    <div>
-      <p class="eyebrow">Daily routine, automated</p>
-      <h1>From a photo of a recipe to a recipe you can <mark>use</mark>.</h1>
-      <p class="lede">todayDo Support builds tools that take repetitive daily work off your plate. Our first project reads baking recipes from photos or text, organizes them, and saves them in one place.</p>
-      <a class="btn" href="#contact">Get in touch</a>
-    </div>
-
-    <figure class="stage" style="margin:0" aria-label="Example: a handwritten recipe note becomes an organized recipe card">
+    <h1>Photo in.<br>Recipe out.</h1>
+    <div class="hero-grid">
       <div>
-        <div class="note" aria-hidden="true">
-          <p>lemon loaf!! 2 cups flour, 1 tsp baking pwdr, pinch salt, 3/4 c sugar + zest of 2 lemons. 3 eggs, 1/2 c yogurt, 1/3 c oil. wet first then dry. 350F ~45 min</p>
-          <span class="scan"></span>
+        <p class="lede">todayDo Support builds tools that take repetitive daily work off your plate. Our first project reads baking recipes from photos or text, organizes them, and saves them in one place.</p>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+
+      <figure class="stage" aria-label="Example: a handwritten recipe note becomes an organized recipe card">
+        <div>
+          <div class="note" aria-hidden="true">
+            <p>lemon loaf!! 2 cups flour, 1 tsp baking pwdr, pinch salt, 3/4 c sugar + zest of 2 lemons. 3 eggs, 1/2 c yogurt, 1/3 c oil. wet first then dry. 350F ~45 min</p>
+            <span class="scan"></span>
+          </div>
+          <p class="caption">Example input: a photo or pasted text</p>
         </div>
-        <p class="caption">Example input: a photo or pasted text</p>
-      </div>
-      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-      <div>
-        <article class="recipe">
-          <h2>Lemon Yogurt Loaf</h2>
-          <p class="meta">Bake at 350°F · about 45 min</p>
-          <h3>Ingredients</h3>
-          <ul>
-            <li style="--i:0"><span>2 cups</span><span>flour</span></li>
-            <li style="--i:1"><span>1 tsp</span><span>baking powder</span></li>
-            <li style="--i:2"><span>1 pinch</span><span>salt</span></li>
-            <li style="--i:3"><span>¾ cup</span><span>sugar</span></li>
-            <li style="--i:4"><span>2</span><span>lemons, zested</span></li>
-            <li style="--i:5"><span>3</span><span>eggs</span></li>
-            <li style="--i:6"><span>½ cup</span><span>yogurt</span></li>
-            <li style="--i:7"><span>⅓ cup</span><span>oil</span></li>
-          </ul>
-          <h3>Steps</h3>
-          <ol>
-            <li style="--i:8"><span>1</span><span>Mix the wet ingredients and the sugar.</span></li>
-            <li style="--i:9"><span>2</span><span>Stir in the dry ingredients.</span></li>
-            <li style="--i:10"><span>3</span><span>Bake at 350°F for about 45 minutes.</span></li>
-          </ol>
-        </article>
-        <p class="caption">Example output: an organized recipe, saved</p>
-      </div>
-    </figure>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        <div>
+          <article class="recipe">
+            <h2>Lemon Yogurt Loaf</h2>
+            <p class="meta">Bake at 350°F · about 45 min</p>
+            <h3>Ingredients</h3>
+            <ul>
+              <li style="--i:0"><span>2 cups</span><span>flour</span></li>
+              <li style="--i:1"><span>1 tsp</span><span>baking powder</span></li>
+              <li style="--i:2"><span>1 pinch</span><span>salt</span></li>
+              <li style="--i:3"><span>¾ cup</span><span>sugar</span></li>
+              <li style="--i:4"><span>2</span><span>lemons, zested</span></li>
+              <li style="--i:5"><span>3</span><span>eggs</span></li>
+              <li style="--i:6"><span>½ cup</span><span>yogurt</span></li>
+              <li style="--i:7"><span>⅓ cup</span><span>oil</span></li>
+            </ul>
+            <h3>Steps</h3>
+            <ol>
+              <li style="--i:8"><span>1</span><span>Mix the wet ingredients and the sugar.</span></li>
+              <li style="--i:9"><span>2</span><span>Stir in the dry ingredients.</span></li>
+              <li style="--i:10"><span>3</span><span>Bake at 350°F for about 45 minutes.</span></li>
+            </ol>
+          </article>
+          <p class="caption">Example output: an organized recipe, saved</p>
+        </div>
+      </figure>
+    </div>
   </div>
+</div>
 
-  <section id="what" class="band">
+<main>
+  <section id="what">
     <div class="wrap two">
-      <h2 class="title">We automate the work you repeat every day.</h2>
+      <h2 class="title">We automate the work you repeat every day</h2>
       <p>Copying, sorting, and filing take time, and they come back tomorrow. todayDo Support develops tools that handle that routine work, so the people using them can spend their time on the parts that need them.</p>
     </div>
   </section>
 
-  <section id="product">
+  <section id="product" class="band">
     <div class="wrap">
       <span class="pill">In development</span>
       <h2 class="title">Baking Recipe Organizer</h2>
@@ -209,20 +226,23 @@
     </div>
   </section>
 
-  <section id="contact" class="contact">
+  <section id="contact" class="coral contact">
     <div class="wrap">
-      <h2 class="title">Talk to us.</h2>
+      <h2 class="title">Talk to us</h2>
       <p>Questions about the Baking Recipe Organizer, or about automating a routine of your own? Call or email us.</p>
       <ul class="reach">
-        <li><span class="label">Phone</span><a class="phone" href="tel:+821027807683">+82 10-2780-7683</a></li>
-        <li><span class="label">Email</span><a class="phone" href="mailto:todaydomilo@todaydoapp.com">todaydomilo@todaydoapp.com</a></li>
+        <li><span class="label">Phone</span><a href="tel:+821027807683">+82 10-2780-7683</a></li>
+        <li><span class="label">Email</span><a href="mailto:todaydomilo@todaydoapp.com">todaydomilo@todaydoapp.com</a></li>
       </ul>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">© 2026 todayDo Support</div>
+  <div class="wrap">
+    <img src="logo.jpg" width="56" height="56" alt="todayDo Support logo">
+    <span>© 2026 todayDo Support</span>
+  </div>
 </footer>
 
 </body>
